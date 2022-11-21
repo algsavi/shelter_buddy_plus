@@ -11,6 +11,6 @@ namespace ShelterBuddy.CodePuzzle.Api.Models
         public string? MicrochipNumber { get; init; }
         [Required(ErrorMessage = "Date of Birth is required.")]
         public DateTime? DateOfBirth { get; init; }
-        public string Specie? { get; init; }
+        public string? Specie { get; init; }
     }
 }
