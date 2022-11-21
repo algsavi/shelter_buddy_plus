@@ -5,11 +5,8 @@ namespace ShelterBuddy.CodePuzzle.Api.Data
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<AnimalModel> Animals { get; set; }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Password=p@ssw0rd;Persist Security Info=True;User ID=sa;Initial Catalog=master;Data Source=CXJ0221\SQLEXPRESS");
-        }
+        public DbSet<AnimalModel> Animals { get; set; }
     }
 }
