@@ -1,7 +1,11 @@
 global using ShelterBuddy.CodePuzzle.Api.Data;
 global using Microsoft.EntityFrameworkCore;
+using ShelterBuddy.CodePuzzle.Api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddGraphQLServer().AddQueryType<Query>().AddProjections().AddFiltering().AddSorting();
+
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -26,5 +30,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapGraphQL(path: "/graphql");
 
 app.Run();
